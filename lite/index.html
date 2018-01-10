@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Line Graph Assignment</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="css/pages/dashboard.css" rel="stylesheet">
+    <link href="css/colors/default-dark.css" id="theme" rel="stylesheet">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Graph Assignment</p>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <b>
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        </b>
+                        <span>
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                        </span>
+                    </a>
+                </div>
+               <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-dark" href="#"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Map</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        
+        <div class="page-wrapper">
+            
+            <div class="container-fluid">
+                
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Dashboard</h3>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-9 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h3 class="card-title m-b-5"><span class="lstick"></span>Custom Graph </h3>
+                                    </div>
+                                    
+                                </div>
+                                <div id="chartContainer" style="height: 360px; width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><span class="lstick"></span>Enter X and Y values</h4>
+                                    
+                                    <input class="form-control" id="xValue" type="number" step="any" placeholder="Enter X-Value" style="margin-bottom:20px;padding: .1rem 0.1rem;"> 
+                                    
+                                    <input class="form-control" id="yValue" type="number" step="any" placeholder="Enter Y-Value" style="margin-bottom:20px;padding: .1rem 0.1rem;">
+                                    <button id="renderButton" class="btn btn-success">Add Points & Render</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- Projects of the month -->
+               
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h4 class="card-title"><span class="lstick"></span>Projects of the Month</h4></div>
+                                </div>
+                                <div class="table-responsive m-t-20">
+                                    <table class="table vm no-th-brd no-wrap pro-of-month">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Assigned</th>
+                                                <th>Name</th>
+                                                <th>Priority</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:50px;"><span class="round"><img src="../assets/images/users/1.jpg" alt="user" width="50"></span></td>
+                                                <td>
+                                                    <h6>Anubhav Ujjawal</h6><small class="text-muted">Web Designer</small></td>
+                                                <td>Elite</td>
+                                                <td>Low</td>
+                                            </tr>
+                                            <tr class="active">
+                                                <td><span class="round"><img src="../assets/images/users/2.jpg" alt="user" width="50"></span></td>
+                                                <td>
+                                                    <h6>Rohan Tibrwal</h6><small class="text-muted">Project Manager</small></td>
+                                                <td>Real Homes</td>
+                                                <td>Medium</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-success"><img src="../assets/images/users/3.jpg" alt="user" width="50"></span></td>
+                                                <td>
+                                                    <h6>Garvit Kataria</h6><small class="text-muted">Developer</small></td>
+                                                <td>Medical</td>
+                                                <td>High</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-primary"><img src="../assets/images/users/4.jpg" alt="user" width="50"></span></td>
+                                                <td>
+                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small></td>
+                                                <td>Elite</td>
+                                                <td>Low</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-warning"><img src="../assets/images/users/5.jpg" alt="user" width="50"></span></td>
+                                                <td>
+                                                    <h6>Krishna Kumar</h6><small class="text-muted">Content Writer</small></td>
+                                                <td>Helping Hands</td>
+                                                <td>High</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- contact -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <h4 class="card-title"><span class="lstick"></span>My Contact</h4>
+                                </div>
+                                <div class="message-box contact-box">
+                                    <div class="message-widget contact-widget">
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">info@wrappixel.com</span></div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Sonu Nigam</h5> <span class="mail-desc">pamela1987@gmail.com</span></div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <span class="round">A</span> <span class="profile-status away pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Arijit Sinh</h5> <span class="mail-desc">cruise1298.fiplip@gmail.com</span></div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">kat@gmail.com</span></div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="../assets/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Andrew</h5> <span class="mail-desc">and@gmail.com</span></div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="user-img"> <img src="../assets/images/users/6.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Jonathan Jones</h5> <span class="mail-desc">jj@gmail.com</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Blog and website visit -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-lg-4 col-xlg-3 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><span class="lstick"></span>Visit Separation</h4>
+                                <div id="visitor" style="height:250px; width:100%;"></div>
+                                    
+                                <table class="table vm font-14">
+                                    <tr>
+                                        <td class="b-0">Mobile</td>
+                                        <td class="text-right font-medium b-0">38.5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tablet</td>
+                                        <td class="text-right font-medium">30.8%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desktop</td>
+                                        <td class="text-right font-medium">7.7%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-xlg-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <h4 class="card-title"><span class="lstick"></span>Website Visit</h4>
+                                    <ul class="list-inline m-b-0 ml-auto">
+                                        <li>
+                                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Site A view</h6> </li>
+                                        <li>
+                                            <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>Site B view</h6> </li>
+                                    </ul>
+                                </div>
+                                <div class="website-visitor p-relative m-t-30" style="width:100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <footer class="footer">Designed by <a href="http://iamanurag.site" target="_blank">Anurag Gupta</a></footer>
+            
+        </div>
+        
+    </div>
+    <script>
+    window.onload = function () {
+    var dps = [];
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        theme: "light2",
+        title:{
+            text: "Dynamic Line Graph"
+        },
+        axisX:{
+            
+            crosshair: {
+                enabled: true,
+                snapToDataPoint: true
+            }
+        },
+        axisY: {
+            title: "Number of Visits",
+            crosshair: {
+                enabled: true
+            }
+        },
+        toolTip:{
+            shared:true
+        },  
+        legend:{
+            cursor:"pointer",
+            verticalAlign: "bottom",
+            horizontalAlign: "left",
+            dockInsidePlotArea: true,
+            itemclick: toogleDataSeries
+        },
+        data: [{
+            type: "line",
+            showInLegend: true,
+            name: "Total Visit",
+            markerType: "square",
+            
+            color: "#F08080",
+            dataPoints: dps
+        }]
+        
+    });
+    function addDataPointsAndRender() {
+        xValue = Number(document.getElementById("xValue").value);
+        yValue = Number(document.getElementById("yValue").value);
+        dps.push({
+            x: xValue,
+            y: yValue
+        });
+        chart.render();
+    }
+
+    var renderButton = document.getElementById("renderButton");
+    renderButton.addEventListener("click", addDataPointsAndRender);
+    chart.render();
+
+    function toogleDataSeries(e){
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+            e.dataSeries.visible = false;
+        } else{
+            e.dataSeries.visible = true;
+        }
+        chart.render();
+    }
+
+    }
+    </script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!--c3 JavaScript -->
+    <script src="../assets/plugins/d3/d3.min.js"></script>
+    <script src="../assets/plugins/c3-master/c3.min.js"></script>
+    <!-- Chart JS -->
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

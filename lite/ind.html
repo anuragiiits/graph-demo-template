@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+var dps = [];
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Site Traffic"
+	},
+	axisX:{
+		
+		crosshair: {
+			enabled: true,
+			snapToDataPoint: true
+		}
+	},
+	axisY: {
+		title: "Number of Visits",
+		crosshair: {
+			enabled: true
+		}
+	},
+	toolTip:{
+		shared:true
+	},  
+	legend:{
+		cursor:"pointer",
+		verticalAlign: "bottom",
+		horizontalAlign: "left",
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
+	},
+	data: [{
+		type: "line",
+		showInLegend: true,
+		name: "Total Visit",
+		markerType: "square",
+		
+		color: "#F08080",
+		dataPoints: dps
+	}]
+    
+});
+function addDataPointsAndRender() {
+     xValue = Number(document.getElementById("xValue").value);
+     yValue = Number(document.getElementById("yValue").value);
+     dps.push({
+         x: xValue,
+         y: yValue
+     });
+     chart.render();
+}
+
+var renderButton = document.getElementById("renderButton");
+renderButton.addEventListener("click", addDataPointsAndRender);
+chart.render();
+
+function toogleDataSeries(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	} else{
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
+
+}
+</script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+     X Value:
+    <input id="xValue" type="number" step="any" placeholder="Enter X-Value"> 
+    Y Value:
+    <input id="yValue" type="number" step="any" placeholder="Enter Y-Value">
+    <button id="renderButton">Add DataPoint & Render</button>
+    <div id="chartContainer" style="height: 300px; width: 100%;">
+    </div>
+    
+</body>
+</html>
